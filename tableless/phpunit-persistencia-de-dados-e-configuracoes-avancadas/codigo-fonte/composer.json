@@ -1,0 +1,27 @@
+{
+    "name": "andrebian/tableless-tdd",
+    "description": "Um pequeno exemplo de trabalho com PHPUnit e persistência de dados",
+    "authors": [
+        {
+            "name": "Andre Cardoso aka andrebian",
+            "email": "andrecardosodev@gmail.com"
+        }
+    ],
+    "require": {
+        "doctrine/common" : "*",
+        "doctrine/dbal": "*",
+        "doctrine/orm" : "*",
+        "phpunit/phpunit": "3.7.*",
+        "zendframework/zend-stdlib": "2.3.*@dev",
+        "zendframework/zend-filter": "2.3.*@dev",
+        "zendframework/zend-servicemanager": "2.3.*@dev",
+        "zendframework/zend-crypt": "2.3.*@dev",
+        "zendframework/zend-math": "2.3.*@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Tableless\\": "src/"
+        }
+    }
+}
+
