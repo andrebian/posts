@@ -61,8 +61,8 @@ Aqui será criado um arquivo PHPNativeElements onde serão testados algumas fun�
 
 Criado o arquivo PHPNativeElementsTest.php dentro do diretório tests, siga o exemplo abaixo.
 
-![enter image description here][5]
-Estrutura inicial do primeiro teste
+![Estrutura inicial do primeiro teste][5]
+
 
 Para que seja reconhecido como um teste o arquivo deve conter a sufixo Test.
 
@@ -180,4 +180,4 @@ Os próximos artigos seguirão a sequência abaixo:
   [14]: http://tableless.com.br/wp-content/uploads/2013/12/14-test-refactor-488x310.png
   [15]: http://tableless.com.br/wp-content/uploads/2013/12/15-refactor-588x284.png
   [16]: http://tableless.com.br/wp-content/uploads/2013/12/16-refactor-pass-577x310.png
-  [17]: http://tableless.com.br/tdd-por-que-usar/ 
+  [17]: http://tableless.com.br/tdd-por-que-usar/
