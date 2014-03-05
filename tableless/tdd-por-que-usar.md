@@ -54,6 +54,6 @@ Em suma tudo vai depender to porte do projeto em que se está trabalhando, da cu
 Agora que você já tem uma noção do que é TDD, suas vantagens e desvantagens, sugiro a ler sobre xUnit. O xUnit é um framework de testes disponível para várias linguagens de programação. Em PHP temos o PHPUnit, em java o jUnit e demais linguagens possuem seus frameworks que tem a mesma finalidade, criar um ecossistema para que o programador desenvolva orientando-se a testes.
 
 Post original : [Tableless][1]
-
+Publicado em : 17/12/2013
 
   [1]: http://tableless.com.br/tdd-por-que-usar/ 
