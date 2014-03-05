@@ -62,7 +62,7 @@ Aqui será criado um arquivo PHPNativeElements onde serão testados algumas fun�
 Criado o arquivo PHPNativeElementsTest.php dentro do diretório tests, siga o exemplo abaixo.
 
 ![Estrutura inicial do primeiro teste][5]
-
+Estrutura inicial do primeiro teste
 
 Para que seja reconhecido como um teste o arquivo deve conter a sufixo Test.
 
@@ -164,6 +164,12 @@ Os próximos artigos seguirão a sequência abaixo:
 * Mockery – Utilizando objetos simulados para atender certos comportamentos
 
 
+----------
+Post original: [Tableless][18]
+
+Publicado em: 07/01/2014
+
+
   [1]: http://tableless.com.br/wp-content/uploads/2013/12/01-composer-install-397x310.png
   [2]: http://tableless.com.br/wp-content/uploads/2013/12/02-estrutura-pastas-384x310.png
   [3]: http://tableless.com.br/wp-content/uploads/2013/12/4-nova-estrutura-pastas-588x303.png
@@ -181,3 +187,4 @@ Os próximos artigos seguirão a sequência abaixo:
   [15]: http://tableless.com.br/wp-content/uploads/2013/12/15-refactor-588x284.png
   [16]: http://tableless.com.br/wp-content/uploads/2013/12/16-refactor-pass-577x310.png
   [17]: http://tableless.com.br/tdd-por-que-usar/
+  [18]: http://tableless.com.br/phpunit-como-iniciar-sem-dores/
