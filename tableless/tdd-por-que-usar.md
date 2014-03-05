@@ -37,7 +37,7 @@ Por prover mais segurança o trabalho em equipe torna-se muito mais proveitoso e
 Ao criar testes descritivos estes servem como uma excelente documentação para o software. Quando qualquer programador for rodar os testes, basta habilitar o modo verbose que uma “história” é contada eliminando o árduo trabalho de documentar um software onde nos meios tradicionais tende a defasar-se. O problema é que a documentação tradicional raramente segue o mesmo ritmo do desenvolvimento. Com os testes unitários a “documentação” é gerada antes mesmo da nova feature ser implementada e permanece fiel a qualquer alteração.
 
 
-###O QUE RESUME-SE DISTO TUDO?
+###O que resume-se disto tudo?
 Até aqui temos os pontos negativos e positivos do desenvolvimento orientado a testes. Agora vamos aprender um pouco sobre o que é TDD.
 
 O TDD (Test Driven Development) baseia-se em três passos, vermelho-verde-refatora. O vermelho é a escrita do primeiro teste antes mesmo da lógica existir. O verde é o ponto em que a lógica para que o teste previamente criado passe. Esta lógica deve ser desenvolvida da forma mais simples possível eliminando complexidades desnecessárias fazendo com que a evolução do código ocorra de forma segura. O refatora é a melhoria do código. Neste ponto são removidas duplicações, múltiplas responsabilidades e o código fica cada vez mais próximo de sua versão final.
