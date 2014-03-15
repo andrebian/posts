@@ -175,5 +175,6 @@ Também é possível somente rodar o comando ./app/Console/cake Migrations.migra
 
 Este foi apenas um apanhado básico de como utilizar Migrations no CakePHP. Pode parecer astante coisa, e é, de começo é claro pois depois que a migração está configurada tudo corre muito tranquilo.
 
-
-
+--------------------
+Postado em: 15/03/2014
+Link: http://www.andrebian.com/migrations-cakephp/
