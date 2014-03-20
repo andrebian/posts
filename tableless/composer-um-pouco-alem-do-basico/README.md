@@ -4,17 +4,6 @@
 Este post visa explicar algumas funcionalidades mais avançadas do composer, se você ainda não conhece o composer por favor leia [composer para iniciantes][1] antes de prosseguir.
 
 
---------------------------------------
-##Apenas uma cola
-###O que será abordado?
-* Instalação global
-* direcionamento de vendor
-* Direcionamento de pacotes
-* Diferenças entre require e require-dev
-* Criação de seu pacote do composer
-
-----------------------------------
-
 No post anterior, [composer para iniciantes][2] expliquei o que vem a ser o composer, como baixar, criar o arquivo de configurações e instalar pacotes ou bibliotecas. Agora veremos algumas questões um pouco mais avançadas sobre o uso do composer.
 
 ##Instalação global
@@ -47,7 +36,7 @@ ou
 
 Com isso dentro da pasta /opt/composer deve agora existir o arquivo *composer.phar*. Os passos descritos até aqui são ilustrados na imagem abaixo.
 
-[imagem 1]
+![enter image description here][4]
 
 Ainda dentro de */opt/composer* rodamos o comando **php composer.phar**, é exibido o menu de ajuda do compóser indicando que foi instalado corretamente.
 
@@ -67,7 +56,7 @@ Criamos um projeto qualquer em um diretório de sua escolha. Farei o mesmo em me
         }
     } 
 
-Perceba que não temos nenhum pacote de terceiro como dependência ainda, somente definimos que a versão mínima do PHP para rodarmos a aplicação é a 5.2.8, deixaremos esta versão por enquanto e adicionaremos em "require" o [ORM Doctrine][4]. Não será criado nenhum código utilizando o Doctrine, apenas está sendo incluso por ser um projeto que não possui muitas dependências fazendo a instalação ser mais rápida. Então nosso require agora fica assim:
+Perceba que não temos nenhum pacote de terceiro como dependência ainda, somente definimos que a versão mínima do PHP para rodarmos a aplicação é a 5.2.8, deixaremos esta versão por enquanto e adicionaremos em "require" o [ORM Doctrine][5]. Não será criado nenhum código utilizando o Doctrine, apenas está sendo incluso por ser um projeto que não possui muitas dependências fazendo a instalação ser mais rápida. Então nosso require agora fica assim:
 
     "require": {
         "php": ">=5.2.8",
@@ -83,18 +72,18 @@ Note que na versão desejada do Doctrine informei 2.4.**** ***, isto significa q
 
 Agora que está configurada nossa primeira dependência do projeto basta que rodemos o comando **php /opt/composer/composer.phar install**. Atenção ao caminho de onde está sendo rodado o composer, perceba que é a pasta que instalamos ele anteriormente. Com isso não preciso ficar para cada projeto baixando o *composer.phar*.
 
-[imagem 2]
+![\[imagem 2\]][6]
 
 O Doctrine assim como todas as suas dependências são instaladas e temos agora esta estrutura dentro de nosso projeto:
 
-[imagem 3]
+![\[imagem 3\]][7]
 
 ###Qual a vantagem do composer com instalação global?
 Apesar de muitos pensarem e economia de espaço isso é irrelevante pois o *composer.phar* "pesa" apenas 1MB aproximadamente. Há a vantagem que o composer sempre estará disponível para qualquer aplicação eliminando possíveis erros de tentar rodar o comando **php composer.phar alguma-coisa** e o composer.phar não estar presente, ou seja, basicamente a vantagem em possuir uma instalação global é você nunca esquecer de instalá-lo para cada aplicação sua.
 
 No demais não há vantagens pois para cada aplicação o composer realizará o download de todas suas dependências individualmente para cada aplicação, ou seja, se você possuir 3 aplicações, o composer.phar será somente 1 (na pasta /opt/composer/composer.phar) no entanto os vendors serão específicos para cada aplicação como mostra a imagem abaixo:
 
-[imagem 4]
+![\[imagem 4\]][8]
 
 
 ##Direcionamento de vendors
@@ -119,7 +108,7 @@ Feito isto basta rodar o comando **php /opt/composer/composer.phar install** cas
 
 A nova estrutura de nossa aplicação será esta:
 
-[imagem 5]
+![\[imagem 5\]][9]
 
 
 ##Direcionando pacotes
@@ -145,7 +134,7 @@ Mesmo que você esteja utilizando os instaladores ainda sim pode personalizar pa
 
 No novo exemplo do composer estou informando que o plugin de upload do CakePHP será instalado na pasta *plugins/Upload* ao invés de *app/Plugin/Upload* como seria instalado pelo CakePHPInstaller do composer.
 
-[imagem 6]
+![\[imagem 6\]][10]
 
 Como você pode ver, é possível personalizar a instalação cada pacote com simples configuração através de nosso arquivo *composer.json*.
 
@@ -167,30 +156,30 @@ Com a configuração distinta podemos instalar no ambiente de produção somente
 
 Como já realizamos a primeira instalação através do composer agora apenas utilizamos o comando **php /opt/composer/composer.phar update** (se for a instalação global do composer) ou **php composer.phar update** (se o composer.phar foi baixado na raiz de sua aplicação). Com este comando todos os pacotes serão instalados.
 
-[imagem 7]
+![\[imagem 7\]][11]
 
 Após a atualização (que baixará muitos pacotes) a nova estrutura de nosso projeto é a seguinte.
 
-[imagem 8]
+![\[imagem 8\]][12]
 
 Pensemos agora que estamos no ambiente de produção ou homologação onde não se faz necessário o PHPUnit. Não é necessária a remoção do mesmo no arquivo *composer.json* e sim rodarmos o comando **php composer.phar update --no-dev** e o resultado será como na imagem abaixo.
 
-[imagem 9]
+![\[imagem 9\]][13]
 
 Note apenas que na imagem acima eu rodei o update em meu ambiente de desenvolvimento apenas excluindo os pacotes de modo *dev* para ilustrar o funcionamento. Na imagem também é possível perceber que o PHPUnit e suas dependências que já estavam instalados foram removidos por não serem mais necessários em modo produção. Na imagem abaixo está a nova estrutura de nossa aplicação.
 
-[imagem 6]
+![\[imagem 6\]][14]
 
 
 ##Criando um pacote do composer
 
-Pra finalizar criaremos um pacote do composer. Primeiramente você precisa ter uma conta no [github][5] ou [bitbucket][6] (trabalharemos apenas com versionamento em git). Também será necessária uma conta no [Packagist][7].
+Pra finalizar criaremos um pacote do composer. Primeiramente você precisa ter uma conta no [github][15] ou [bitbucket][16] (trabalharemos apenas com versionamento em git). Também será necessária uma conta no [Packagist][17].
 
-Tendo os requisitos atendidos agora deve ser criado um repositório no github, se você não sabe criar ou não utilizou o github ainda leia [este tutorial][8].
+Tendo os requisitos atendidos agora deve ser criado um repositório no github, se você não sabe criar ou não utilizou o github ainda leia [este tutorial][18].
 
 Feito isto é hora de clonar o repositório em uma pasta de sua preferência, utilize o comando **git clone git@github.com:username/repo-name.git** no meu caso é: git clone git@github.com:andrebian/exemplo-composer-tableless.git. Na imagem abaixo é possível ver o git realizando o clone e a estrutura inicial do projeto que contém além dos arquivos do git somente o arquivo README.md que foi criado juntamente com a criação do repositório no github.
 
-[imagem 10]
+![\[imagem 10\]][19]
 
 Agora temos de criar nosso arquivo *composer.json* para que sejam adicionadas as informações de nosso novo pacote. Sua estrutura é a seguinte.
 
@@ -214,65 +203,89 @@ Agora temos de criar nosso arquivo *composer.json* para que sejam adicionadas as
 
 Note que adicionei uma dependência ao meu projeto, com isso mesmo se o pacote slug.php não estiver setado no composer que engloba toda a aplicação será instalado porque eu informei que meu pacote precisa dele para funcionar corretamente.
 
-Feito isto basta que as alterações realizadas sejam enviadas ao github e podemos prosseguir com a criação do pacote no packagist. Não vou explicar o funcionamento do git (commit, pull, push e outros) pois o foco deste post é o composer. Se você ainda não conhece o git sujiro a leitura de [Iniciando no git][9] que foi escrito pelo Diego Eis e está divido em duas partes que lhe mostram conceitos e utilização do mesmo. A imagem abaixo mostra o repositório no github já com a nova estrutura contendo o *composer.json*.
+Feito isto basta que as alterações realizadas sejam enviadas ao github e podemos prosseguir com a criação do pacote no packagist. Não vou explicar o funcionamento do git (commit, pull, push e outros) pois o foco deste post é o composer. Se você ainda não conhece o git sujiro a leitura de [Iniciando no git][20] que foi escrito pelo Diego Eis e está divido em duas partes que lhe mostram conceitos e utilização do mesmo. A imagem abaixo mostra o repositório no github já com a nova estrutura contendo o *composer.json*.
 
-[imagem 11]
+![\[imagem 11\]][21]
 
 Agora que já temos nosso repositório no github basta criarmos nosso pacote no packagist. Acessando https://packagist.org/ e estando logado clique em "Submit package".
 
-[imagem 12]
+![\[imagem 12\]][22]
 
 Informe a URL em que o mesmo se encontra, neste caso https://github.com/andrebian/exemplo-composer-tableless e clique em Check
 
-[imagem 13]
+![\[imagem 13\]][23]
 
 Após a verificação e confirmação de que está tudo ok basta clicar em Submit
 
-[imagem 14]
+![\[imagem 14\]][24]
 
 Na imagem seguinte você pode ver que o pacote foi criado com sucesso e já está disponível para ser adicionado como dependência em qualquer projeto que você desejar.
 
-[imagem 15]
+![\[imagem 15\]][25]
 
 Note apenas que há uma chamada de atenção ali informando que o pacote não é atualizável automaticamente, vamos corrigir isto agora.
 
 Acessando sua conta no github navegue pelos seus repositórios até encontrar o desejado e entre em suas configurações.
 
-[imagem 16]
+![\[imagem 16\]][26]
 
 À esquerda há um menu com algumas opções, clique em **Webhooks & Services** e em seguida em configurar serviços.
 
-[imagem 17]
+![\[imagem 17\]][27]
 
 Role a tela até localizar o serviço **Packagist** e clique no mesmo. Uma nova tela será aberta solicitando os dados de sua conta. Forneça "user" e "token", o "domain" é opcional, em seguida marque a opção "Active" e clique em Update Settings. 
 
-[imagem 18]
+![\[imagem 18\]][28]
 
 Para obter o token, vá até sua conta no Packagist e clique em "Show API Token".
 
-[imagem 19]
+![\[imagem 19\]][29]
 
 Após confirmado o user e token nas configurações de webhooks do github, acesse novamente Webhooks & Services, vá novamente até Packagist e perceba que agora existe um botão de teste para confirmar que o serviço foi habilitado com sucesso, clique sobre o mesmo e certifique-se de que uma mensagem de sucesso foi retornarda.
 
-[imagem 20]
+![\[imagem 20\]][30]
 
 Quase lá, agora falta somente acessarmos nosso pacote no composer para certificar que a mensagem de que o mesmo não é atualizado automaticamente não aparece mais.
 
-[imagem 21]
+![\[imagem 21\]][31]
 
 Prontinho! Tudo funcionando perfeitamente. Agora sempre que você der um push no github o pacote do composer é atualizado automaticamente.
 
 
 ##Concluindo
 
-Como você pode ver o composer é muito versátil, pode (e deve preferencialmente) ser utilizado em todo e qualquer projeto em PHP. Obviamente que existem configurações mais avançadas no entanto elas não vem ao caso neste momento por serem muito específicas de cada projeto/pacote. A ideia deste post era fornecer um pouco mais de informações sobre a utilização do composer que foi iniciada no post anterior [Composer para iniciantes][1] para maiores informações a documentação oficial sempre será a melhor fonte.
+Como você pode ver o composer é muito versátil, pode (e deve preferencialmente) ser utilizado em todo e qualquer projeto em PHP. Obviamente que existem configurações mais avançadas no entanto elas não vem ao caso neste momento por serem muito específicas de cada projeto/pacote. A ideia deste post era fornecer um pouco mais de informações sobre a utilização do composer que foi iniciada no post anterior [Composer para iniciantes][32] para maiores informações a documentação oficial sempre será a melhor fonte.
+
 
   [1]: http://tableless.com.br/composer-para-iniciantes/
   [2]: http://tableless.com.br/composer-para-iniciantes/
   [3]: https://getcomposer.org/doc/
-  [4]: http://www.doctrine-project.org/
-  [5]: https://github.com/
-  [6]: https://bitbucket.org/
-  [7]: https://packagist.org/
-  [8]: https://help.github.com/articles/create-a-repo
-  [9]: http://tableless.com.br/iniciando-no-git-parte-1/
+  [4]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/01-download-do-composer.jpg
+  [5]: http://www.doctrine-project.org/
+  [6]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/02-instalando-primeiras-dependencias.jpg
+  [7]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/03-nova-estrutura-vendor.jpg
+  [8]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/04-dois-projetos-com-vendors-distintos.jpg
+  [9]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/05-nova-estrutura-vendor-path.jpg
+  [10]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/06-pacote-em-diretorio-personalizado.jpg
+  [11]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/07-atualizando-dev.jpg
+  [12]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/08-estrutura-com-dev.jpg
+  [13]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/09-update-sem-dev.jpg
+  [14]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/06-pacote-em-diretorio-personalizado.jpg
+  [15]: https://github.com/
+  [16]: https://bitbucket.org/
+  [17]: https://packagist.org/
+  [18]: https://help.github.com/articles/create-a-repo
+  [19]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/10-clonando-novo-projeto.jpg
+  [20]: http://tableless.com.br/iniciando-no-git-parte-1/
+  [21]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/11-projeto-no-github.jpg
+  [22]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/12-submit-package.jpg
+  [23]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/13-package-url.jpg
+  [24]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/14-confirm-submit.jpg
+  [25]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/15-package-created.jpg
+  [26]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/16-settings.jpg
+  [27]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/17-webhooks.jpg
+  [28]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/18-packagist-token.jpg
+  [29]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/19-show-api-token.jpg
+  [30]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/20-confirm-service.jpg
+  [31]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/20-success.jpg
+  [32]: http://tableless.com.br/composer-para-iniciantes/
