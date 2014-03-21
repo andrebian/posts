@@ -1,0 +1,21 @@
+{
+    "authors": [
+        {
+            "name": "Andre Cardoso aka andrebian",
+            "email": "andrecardosodev@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.8",
+        "doctrine/orm": "*",
+        "josegonzalez/cakephp-upload": "*"
+    },
+    "require-dev" : {
+	"phpunit/phpunit" : "4.0.*"
+    },
+    "extra" : {
+        "installer-paths" : {
+            "plugins/Upload" : ["josegonzalez/cakephp-upload"]
+        }
+    }
+}  
