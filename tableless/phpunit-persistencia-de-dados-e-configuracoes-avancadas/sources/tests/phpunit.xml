@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit 
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    colors="true" 
+    bootstrap="bootstrap.php">
+    
+    <!-- Indicando qual é o diretório onde as classes de teste se encontram -->
+    <testsuites>
+        <testsuite name="Tableless TDD Test Suite">
+            <directory suffix=".php">src/</directory>
+        </testsuite>
+    </testsuites>
+ 
+<!-- Adicionando filtros, basicamente whitelist (diretórios que serão executados), 
+    dentro temos o exclude (diretórios que não serão executados pelos testes) -->
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../src/</directory>
+            <exclude>
+                <directory suffix=".php">./vendor/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    
+    <logging>
+        <log type="testdox-text" target="data/testdox.txt"/>
+        <log type="coverage-html" target="data/coverage" charset="UTF-8" yui="true" highlight="true" lowUpperBound="35" highLowerBound="70" />
+    </logging>
+    
+</phpunit>
