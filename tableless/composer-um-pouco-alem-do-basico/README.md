@@ -94,7 +94,7 @@ O Doctrine assim como todas as suas dependências são instaladas e temos agora 
 ###Qual a vantagem do composer com instalação global?
 Apesar de muitos pensarem e economia de espaço isso é irrelevante pois o *composer.phar* "pesa" apenas 1MB aproximadamente. Há a vantagem que o composer sempre estará disponível para qualquer aplicação eliminando possíveis erros de tentar rodar o comando **php composer.phar alguma-coisa** e o composer.phar não estar presente, ou seja, basicamente a vantagem em possuir uma instalação global é você nunca esquecer de instalá-lo para cada aplicação sua.
 
-No demais não há vantagens pois para cada aplicação o composer realizará o download de todas suas dependências individualmente para cada aplicação, ou seja, se você possuir 3 aplicações, o composer.phar será somente 1 (na pasta /opt/composer/composer.phar) no entanto os vendors serão específicos para cada aplicação como mostra a imagem abaixo:
+No demais não há vantagens pois para cada aplicação o composer realizará o download de todas suas dependências individualmente, ou seja, se você possuir 3 aplicações, o composer.phar será somente 1 (na pasta /opt/composer/composer.phar) no entanto os vendors serão específicos para cada aplicação como mostra a imagem abaixo:
 
 ![\[imagem 4\]][8]
 
