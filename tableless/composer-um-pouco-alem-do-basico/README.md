@@ -74,7 +74,7 @@ Perceba que não temos nenhum pacote de terceiro como dependência ainda, soment
     }
 ```
 
-Note que na versão desejada do Doctrine informei 2.4.**\***, isto significa que sempre será utilizada a versão mais recente dentro do release 2.4. Caso você queira estar sempre com a mais atual possível basta remover a numeração da versão e adicionar somente "*" *, desta forma nosso require no *composer.json* tem esta estrutura:
+Note que na versão desejada do Doctrine informei 2.4.**\***, isto significa que sempre será utilizada a versão mais recente dentro do release 2.4. Caso você queira estar sempre com a mais atual possível basta remover a numeração da versão e adicionar somente "\*", desta forma nosso require no *composer.json* tem esta estrutura:
 
 ```json
 "require": {
