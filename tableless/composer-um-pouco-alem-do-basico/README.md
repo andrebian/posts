@@ -193,7 +193,7 @@ Note apenas que na imagem acima eu rodei o update em meu ambiente de desenvolvim
 ##Definição de Autoload
 
 
-Para quem não conhece existe a [FIG][15] (Framework Interop Group) que visa sugerir padrões de desenvolvimento através de suas PSRs. Atualmente são 4 recomendações sendo a primeira delas ([PSR-0][16]) a que trata de como ocarregamento de sua aplicação deve ocorrer. Basicamente é a informação de onde será definido o namespace de sua aplicação. 
+Para quem não conhece existe a [FIG][15] (Framework Interop Group) que visa sugerir padrões de desenvolvimento através de suas PSRs. Atualmente são 4 recomendações sendo a primeira delas ([PSR-0][16]) a que trata de como o carregamento de sua aplicação deve ocorrer. Basicamente é a informação de onde será definido o namespace de sua aplicação. 
 
 ```javascript
 "autoload" : {
