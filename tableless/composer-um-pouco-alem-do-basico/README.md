@@ -18,7 +18,10 @@ Mãos na massa!
 
 Instalarei o composer no diretório /opt de meu Linux, você pode selecionar o diretório de sua preferência pois funcionará da mesma forma, desde que você tenha o PHP instalado é claro.
 
-    $ cd /opt && mkdir composer && cd composer
+```shell
+$cd /opt && mkdir composer && cd composer 
+```
+
 
 O comando acima em 3 passos (separados por ***&&***). No passo 1, entro no diretório /opt. No passo 2 crio uma pasta chamada composer e no passo 3 entro na pasta *composer* recém criada.
  
@@ -28,11 +31,15 @@ O comando acima em 3 passos (separados por ***&&***). No passo 1, entro no diret
 
 Agora dentro da pasta /opt/composer basta que baixemos o composer através de uma das opções abaixo:
 
-    curl -sS https://getcomposer.org/installer | php
+```shell 
+curl -sS https://getcomposer.org/installer | php
+```
 
 ou
 
-    php -r "readfile('https://getcomposer.org/installer');" | php
+```shell
+php -r "readfile('https://getcomposer.org/installer');" | php
+```
 
 Com isso dentro da pasta /opt/composer deve agora existir o arquivo *composer.phar*. Os passos descritos até aqui são ilustrados na imagem abaixo.
 
@@ -44,7 +51,8 @@ Ainda dentro de */opt/composer* rodamos o comando **php composer.phar**, é exib
 
 Criamos um projeto qualquer em um diretório de sua escolha. Farei o mesmo em meu Desktop em uma pasta chamada *composer-alem-do-basico*. Dentro desta pasta crio um arquivo chamado *composer.json* adicionando a seguinte estrutura:
 
-    {
+```json
+{
         "authors": [
             {
                 "name": "Seu nome",
@@ -55,20 +63,25 @@ Criamos um projeto qualquer em um diretório de sua escolha. Farei o mesmo em me
             "php": ">=5.2.8",
         }
     } 
+```
 
 Perceba que não temos nenhum pacote de terceiro como dependência ainda, somente definimos que a versão mínima do PHP para rodarmos a aplicação é a 5.2.8, deixaremos esta versão por enquanto e adicionaremos em "require" o [ORM Doctrine][5]. Não será criado nenhum código utilizando o Doctrine, apenas está sendo incluso por ser um projeto que não possui muitas dependências fazendo a instalação ser mais rápida. Então nosso require agora fica assim:
 
-    "require": {
+```json
+"require": {
         "php": ">=5.2.8",
         "doctrine/orm" : "2.4.*"
     }
+```
 
 Note que na versão desejada do Doctrine informei 2.4.**** ***, isto significa que sempre será utilizada a versão mais recente dentro do release 2.4. Caso você queira estar sempre com a mais atual possível basta remover a numeração da versão e adicionar somente "*" *, desta forma nosso require no *composer.json* tem esta estrutura:
 
-    "require": {
+```json
+"require": {
         "php": ">=5.2.8",
         "doctrine/orm" : "*"
     }
+```
 
 Agora que está configurada nossa primeira dependência do projeto basta que rodemos o comando **php /opt/composer/composer.phar install**. Atenção ao caminho de onde está sendo rodado o composer, perceba que é a pasta que instalamos ele anteriormente. Com isso não preciso ficar para cada projeto baixando o *composer.phar*.
 
@@ -92,6 +105,7 @@ Por padrão o composer entende que as bibliotecas de terceiros devem ficar dentr
 
 Isto é facilmente configurado através do arquivo *composer.json*. Decalararei que minhas bibliotecas de terceiros serão acondicionadas em 3rdparty apenas para fins didáticos. Para direcionar os vendors do composer precisamos adicionar a informação de onde nossos vendors serão acondicionados:
 
+```json
     ....
     "require": {
         "php": ">=5.2.8",
@@ -101,6 +115,7 @@ Isto é facilmente configurado através do arquivo *composer.json*. Decalararei 
         "vendor-dir": "3rdparty"
     }
     .....
+```
 
 Feito isto basta rodar o comando **php /opt/composer/composer.phar install** caso não tenha instalado ainda ou **php /opt/composer/composer.phar update** caso já tenha realizado alguma instalação anteriormente. 
 
@@ -117,6 +132,7 @@ Cada pacote que você define como uma dependência de sua aplicação possui uma
 
 Um bom exemplo de plugins que são instalados em seus diretórios corretos são os plugins do wordpress, desde que você informe que estará utilizando os instaladores do composer `"composer/installers": "*"`. Caso você não esteja utilizando os instaladores do composer pode simplesmente direcionar cada pacote para onde bem entender.
 
+```json
     ....
     "require": {
         "php": ">=5.2.8",
@@ -129,6 +145,7 @@ Um bom exemplo de plugins que são instalados em seus diretórios corretos são 
     	}
     },
     ....
+```
 
 Mesmo que você esteja utilizando os instaladores ainda sim pode personalizar pacote por pacote onde quer que eles sejam instalados dentro de sua aplicação.
 
@@ -143,6 +160,7 @@ Como você pode ver, é possível personalizar a instalação cada pacote com si
 
 O composer trabalha basicamente com dois tipos de dependências, os *require* que são os estritamente necessários para o funcionamento da aplicação e os *require-dev* que são dependências utilizadas em ambiente de desenvolvimento, são elas ferramentas como PHPUnit, ferramentas de log, entre outras. No exemplo abaixo informamos que para nossa aplicação utilizaremos o ORM Doctrine e para o ambiente de desenvolvimento somente utilizaremos o PHPUnit.
 
+```json
     "require": {
         "php": ">=5.2.8",
         "doctrine/orm": "*",
@@ -151,6 +169,7 @@ O composer trabalha basicamente com dois tipos de dependências, os *require* qu
     "require-dev" : {
 	    "phpunit/phpunit" : "4.0.*"
     },
+```
 
 Com a configuração distinta podemos instalar no ambiente de produção somente as dependências necessárias para o funcionamento correto da aplicação deixando de lado as dependências de desenvolvimento.
 
@@ -209,6 +228,7 @@ Feito isto é hora de clonar o repositório em uma pasta de sua preferência, ut
 
 Agora temos de criar nosso arquivo *composer.json* para que sejam adicionadas as informações de nosso novo pacote. Sua estrutura é a seguinte.
 
+```json
     {
         "name": "andrebian/exemplo-composer-tableless",
         "description": "Este pacote foi criado apenas para complementar o post no Tableless",
@@ -223,6 +243,7 @@ Agora temos de criar nosso arquivo *composer.json* para que sejam adicionadas as
             "kevinlebrun/slug.php": "1.*"
         }
     }
+```
 
 > A chave "name" deve possuir o vendor (seu username) e o slug do nome
 > do projeto.
