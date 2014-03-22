@@ -171,15 +171,41 @@ Note apenas que na imagem acima eu rodei o update em meu ambiente de desenvolvim
 ![\[imagem 6\]][14]
 
 
+##Definição de Autoload
+
+
+Para quem não conhece existe a [FIG][15] (Framework Interop Group) que visa sugerir padrões de desenvolvimento através de suas PSRs. Atualmente são 4 recomendações sendo a primeira delas ([PSR-0][16]) a que trata de como ocarregamento de sua aplicação deve ocorrer. Basicamente é a informação de onde será definido o namespace de sua aplicação. 
+
+```javascript
+"autoload" : {
+    "psr-0": {
+        "Tableless\\": "src/"
+    }
+}
+```
+
+Note que foi definido o namespace _Tableless_ indicando que o mesmo está dentro da pasta _src_. O nome da pasta pode ser outro qualquer e não somente _src_.
+
+Com isso a nova estrutura de nossa aplicação é esta
+
+![\[imagem 21\]][17]
+
+Para utilizar todo o projeto entitulado como Tableless neste exemplo basta informá-lo onde o mesmo se faça necessário:
+
+```php
+use Tableless;
+```
+
+
 ##Criando um pacote do composer
 
-Pra finalizar criaremos um pacote do composer. Primeiramente você precisa ter uma conta no [github][15] ou [bitbucket][16] (trabalharemos apenas com versionamento em git). Também será necessária uma conta no [Packagist][17].
+Pra finalizar criaremos um pacote do composer. Primeiramente você precisa ter uma conta no [github][18] ou [bitbucket][19] (trabalharemos apenas com versionamento em git). Também será necessária uma conta no [Packagist][20].
 
-Tendo os requisitos atendidos agora deve ser criado um repositório no github, se você não sabe criar ou não utilizou o github ainda leia [este tutorial][18].
+Tendo os requisitos atendidos agora deve ser criado um repositório no github, se você não sabe criar ou não utilizou o github ainda leia [este tutorial][21].
 
 Feito isto é hora de clonar o repositório em uma pasta de sua preferência, utilize o comando **git clone git@github.com:username/repo-name.git** no meu caso é: git clone git@github.com:andrebian/exemplo-composer-tableless.git. Na imagem abaixo é possível ver o git realizando o clone e a estrutura inicial do projeto que contém além dos arquivos do git somente o arquivo README.md que foi criado juntamente com a criação do repositório no github.
 
-![\[imagem 10\]][19]
+![\[imagem 10\]][22]
 
 Agora temos de criar nosso arquivo *composer.json* para que sejam adicionadas as informações de nosso novo pacote. Sua estrutura é a seguinte.
 
@@ -203,58 +229,58 @@ Agora temos de criar nosso arquivo *composer.json* para que sejam adicionadas as
 
 Note que adicionei uma dependência ao meu projeto, com isso mesmo se o pacote slug.php não estiver setado no composer que engloba toda a aplicação será instalado porque eu informei que meu pacote precisa dele para funcionar corretamente.
 
-Feito isto basta que as alterações realizadas sejam enviadas ao github e podemos prosseguir com a criação do pacote no packagist. Não vou explicar o funcionamento do git (commit, pull, push e outros) pois o foco deste post é o composer. Se você ainda não conhece o git sujiro a leitura de [Iniciando no git][20] que foi escrito pelo Diego Eis e está divido em duas partes que lhe mostram conceitos e utilização do mesmo. A imagem abaixo mostra o repositório no github já com a nova estrutura contendo o *composer.json*.
+Feito isto basta que as alterações realizadas sejam enviadas ao github e podemos prosseguir com a criação do pacote no packagist. Não vou explicar o funcionamento do git (commit, pull, push e outros) pois o foco deste post é o composer. Se você ainda não conhece o git sujiro a leitura de [Iniciando no git][23] que foi escrito pelo Diego Eis e está divido em duas partes que lhe mostram conceitos e utilização do mesmo. A imagem abaixo mostra o repositório no github já com a nova estrutura contendo o *composer.json*.
 
-![\[imagem 11\]][21]
+![\[imagem 11\]][24]
 
 Agora que já temos nosso repositório no github basta criarmos nosso pacote no packagist. Acessando https://packagist.org/ e estando logado clique em "Submit package".
 
-![\[imagem 12\]][22]
+![\[imagem 12\]][25]
 
 Informe a URL em que o mesmo se encontra, neste caso https://github.com/andrebian/exemplo-composer-tableless e clique em Check
 
-![\[imagem 13\]][23]
+![\[imagem 13\]][26]
 
 Após a verificação e confirmação de que está tudo ok basta clicar em Submit
 
-![\[imagem 14\]][24]
+![\[imagem 14\]][27]
 
 Na imagem seguinte você pode ver que o pacote foi criado com sucesso e já está disponível para ser adicionado como dependência em qualquer projeto que você desejar.
 
-![\[imagem 15\]][25]
+![\[imagem 15\]][28]
 
 Note apenas que há uma chamada de atenção ali informando que o pacote não é atualizável automaticamente, vamos corrigir isto agora.
 
 Acessando sua conta no github navegue pelos seus repositórios até encontrar o desejado e entre em suas configurações.
 
-![\[imagem 16\]][26]
+![\[imagem 16\]][29]
 
 À esquerda há um menu com algumas opções, clique em **Webhooks & Services** e em seguida em configurar serviços.
 
-![\[imagem 17\]][27]
+![\[imagem 17\]][30]
 
 Role a tela até localizar o serviço **Packagist** e clique no mesmo. Uma nova tela será aberta solicitando os dados de sua conta. Forneça "user" e "token", o "domain" é opcional, em seguida marque a opção "Active" e clique em Update Settings. 
 
-![\[imagem 18\]][28]
+![\[imagem 18\]][31]
 
 Para obter o token, vá até sua conta no Packagist e clique em "Show API Token".
 
-![\[imagem 19\]][29]
+![\[imagem 19\]][32]
 
 Após confirmado o user e token nas configurações de webhooks do github, acesse novamente Webhooks & Services, vá novamente até Packagist e perceba que agora existe um botão de teste para confirmar que o serviço foi habilitado com sucesso, clique sobre o mesmo e certifique-se de que uma mensagem de sucesso foi retornarda.
 
-![\[imagem 20\]][30]
+![\[imagem 20\]][33]
 
 Quase lá, agora falta somente acessarmos nosso pacote no composer para certificar que a mensagem de que o mesmo não é atualizado automaticamente não aparece mais.
 
-![\[imagem 21\]][31]
+![\[imagem 21\]][34]
 
 Prontinho! Tudo funcionando perfeitamente. Agora sempre que você der um push no github o pacote do composer é atualizado automaticamente.
 
 
 ##Concluindo
 
-Como você pode ver o composer é muito versátil, pode (e deve preferencialmente) ser utilizado em todo e qualquer projeto em PHP. Obviamente que existem configurações mais avançadas no entanto elas não vem ao caso neste momento por serem muito específicas de cada projeto/pacote. A ideia deste post era fornecer um pouco mais de informações sobre a utilização do composer que foi iniciada no post anterior [Composer para iniciantes][32] para maiores informações a documentação oficial sempre será a melhor fonte.
+Como você pode ver o composer é muito versátil, pode (e deve preferencialmente) ser utilizado em todo e qualquer projeto em PHP. Obviamente que existem configurações mais avançadas no entanto elas não vem ao caso neste momento por serem muito específicas de cada projeto/pacote. A ideia deste post era fornecer um pouco mais de informações sobre a utilização do composer que foi iniciada no post anterior [Composer para iniciantes][35] para maiores informações a documentação oficial sempre será a melhor fonte.
 
 
   [1]: http://tableless.com.br/composer-para-iniciantes/
@@ -271,21 +297,24 @@ Como você pode ver o composer é muito versátil, pode (e deve preferencialment
   [12]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/08-estrutura-com-dev.jpg
   [13]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/09-update-sem-dev.jpg
   [14]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/06-pacote-em-diretorio-personalizado.jpg
-  [15]: https://github.com/
-  [16]: https://bitbucket.org/
-  [17]: https://packagist.org/
-  [18]: https://help.github.com/articles/create-a-repo
-  [19]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/10-clonando-novo-projeto.jpg
-  [20]: http://tableless.com.br/iniciando-no-git-parte-1/
-  [21]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/11-projeto-no-github.jpg
-  [22]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/12-submit-package.jpg
-  [23]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/13-package-url.jpg
-  [24]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/14-confirm-submit.jpg
-  [25]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/15-package-created.jpg
-  [26]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/16-settings.jpg
-  [27]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/17-webhooks.jpg
-  [28]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/18-packagist-token.jpg
-  [29]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/19-show-api-token.jpg
-  [30]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/20-confirm-service.jpg
-  [31]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/20-success.jpg
-  [32]: http://tableless.com.br/composer-para-iniciantes/
+  [15]: http://www.php-fig.org/
+  [16]: http://www.php-fig.org/psr/psr-0/
+  [17]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/21-namespace.jpg
+  [18]: https://github.com/
+  [19]: https://bitbucket.org/
+  [20]: https://packagist.org/
+  [21]: https://help.github.com/articles/create-a-repo
+  [22]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/10-clonando-novo-projeto.jpg
+  [23]: http://tableless.com.br/iniciando-no-git-parte-1/
+  [24]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/11-projeto-no-github.jpg
+  [25]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/12-submit-package.jpg
+  [26]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/13-package-url.jpg
+  [27]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/14-confirm-submit.jpg
+  [28]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/15-package-created.jpg
+  [29]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/16-settings.jpg
+  [30]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/17-webhooks.jpg
+  [31]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/18-packagist-token.jpg
+  [32]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/19-show-api-token.jpg
+  [33]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/20-confirm-service.jpg
+  [34]: https://raw.githubusercontent.com/andrebian/posts/master/tableless/composer-um-pouco-alem-do-basico/images/20-success.jpg
+  [35]: http://tableless.com.br/composer-para-iniciantes/

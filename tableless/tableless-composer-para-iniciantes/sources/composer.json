@@ -8,5 +8,10 @@
     "require": {
         "php": ">=5.2.8",
         "kevinlebrun/slug.php": "1.*"
+    },
+    "autoload" : {
+	"psr-0": {
+	    "Tableless\\": "src/"
+	}
     }
 } 
