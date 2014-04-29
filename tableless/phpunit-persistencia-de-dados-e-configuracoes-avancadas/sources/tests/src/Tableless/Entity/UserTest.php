@@ -5,6 +5,9 @@ namespace Tableless\Entity;
 use Tableless\Entity\User;
 use Tableless\Test\TestCase;
 
+/**
+* @group Entity
+*/
 class UserTest extends TestCase
 {
     protected $entity;

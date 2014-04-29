@@ -29,4 +29,10 @@
         <log type="coverage-html" target="data/coverage" charset="UTF-8" yui="true" highlight="true" lowUpperBound="35" highLowerBound="70" />
     </logging>
     
+    <groups>
+      <include>
+	<group>Entity</group>
+      </include>
+    </groups>
+    
 </phpunit>
